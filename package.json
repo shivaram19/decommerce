@@ -3,7 +3,19 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "npx hardhat compile",
+    "test": "npx hardhat test",
+    "test:coverage": "npx hardhat coverage",
+    "test:gas": "REPORT_GAS=true npx hardhat test",
+    "node": "npx hardhat node",
+    "deploy": "npx hardhat run scripts/deploy.ts",
+    "deploy:local": "npx hardhat run scripts/deploy.ts --network localhost",
+    "deploy:sepolia": "npx hardhat run scripts/deploy.ts --network sepolia",
+    "verify": "npx hardhat verify",
+    "clean": "npx hardhat clean",
+    "accounts": "npx hardhat accounts",
+    "chain": "npx hardhat node",
+    "console": "npx hardhat console"
   },
   "keywords": [],
   "author": "",
@@ -12,6 +24,8 @@
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "@openzeppelin/contracts": "^5.1.0",
+    "@typechain/ethers-v6": "^0.5.1",
+    "@typechain/hardhat": "^9.1.0",
     "hardhat": "^2.22.16"
   }
 }
