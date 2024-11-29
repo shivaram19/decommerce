@@ -30,6 +30,7 @@
     "hardhat": "^2.22.16"
   },
   "dependencies": {
+    "@nomicfoundation/hardhat-network-helpers": "^1.0.12",
     "ethers": "^6.13.4"
   }
 }
