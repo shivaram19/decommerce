@@ -2,7 +2,6 @@
 
 A Web3 marketplace enabling secure P2P buying and selling with cryptocurrency.
 
-
 ## Installation
 
 ### Prerequisites
@@ -35,37 +34,7 @@ npx hardhat test
 # Deploy locally
 npx hardhat node
 npx hardhat run scripts/deploy.ts --network localhost
-## Features
-
-### ✅ Completed
-- [x] Core smart contracts
- - Marketplace: Product listing and buying
- - Escrow: Secure payment handling
- - Reviews: Verified feedback system
- - LoyaltyToken: ERC20 rewards
-- [x] Testing & Security
- - Unit tests
- - Integration tests
- - Security features
- - Contract verification
-- [x] Loyalty System
- - Token minting
- - Reward distribution
- - Balance tracking
-
-### 🚧 Upcoming
-- [ ] Frontend Build
- - React components
- - Web3 integration
- - Wallet connection
-- [ ] IPFS Integration
- - Product metadata
- - Image storage
-- [ ] User Features
- - Profiles
- - Dashboard
- - Search/Filter
- - Mobile support
+```
 
 ## Architecture
 
@@ -99,16 +68,38 @@ graph TD
    F --> F1[View Rating]
    F --> F2[Check Verified Status]
 
-  subgraph Smart Contracts
-    SC1[Marketplace Contract]
-    SC2[Escrow Contract]
-    SC3[Review System]
-    SC4[Loyalty Token]
-  end
-    
-  subgraph Storage
-    IPFS[IPFS Storage]
-    BC[Blockchain State]
-  end
+```
+
+## Features
+
+### ✅ Completed
+- [x] Core smart contracts
+ - Marketplace: Product listing and buying
+ - Escrow: Secure payment handling
+ - Reviews: Verified feedback system
+ - LoyaltyToken: ERC20 rewards
+- [x] Testing & Security
+ - Unit tests
+ - Integration tests
+ - Security features
+ - Contract verification
+- [x] Loyalty System
+ - Token minting
+ - Reward distribution
+ - Balance tracking
+
+### 🚧 Upcoming
+- [ ] Frontend Build
+ - React components
+ - Web3 integration
+ - Wallet connection
+- [ ] IPFS Integration
+ - Product metadata
+ - Image storage
+- [ ] User Features
+ - Profiles
+ - Dashboard
+ - Search/Filter
+ - Mobile support
 
 
