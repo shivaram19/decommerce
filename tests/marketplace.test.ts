@@ -1,12 +1,14 @@
 // test/marketplace.test.ts
 import { expect } from "chai";
+import "@nomicfoundation/hardhat-ethers";
+import "@nomicfoundation/hardhat-chai-matchers";
 import { ethers }  from "hardhat";
 import { Marketplace, LoyaltyToken, ReviewSystem } from "../typechain-types";
 
 describe("Marketplace System", function() {
-    let marketplace: Marketplace;
-    let loyaltyToken: LoyaltyToken;
-    let reviewSystem: ReviewSystem;
+    let marketplace: any;
+    let loyaltyToken: any;
+    let reviewSystem: any;
     let owner: any;
     let seller: any;
     let buyer: any;
@@ -16,21 +18,17 @@ describe("Marketplace System", function() {
         [owner, seller, buyer] = await ethers.getSigners();
         price = ethers.parseEther("1.0");
 
-        // Deploy LoyaltyToken
         const LoyaltyToken = await ethers.getContractFactory("LoyaltyToken");
         loyaltyToken = await LoyaltyToken.deploy();
 
-        // Deploy ReviewSystem
         const ReviewSystem = await ethers.getContractFactory("ReviewSystem");
         reviewSystem = await ReviewSystem.deploy();
 
-        // Deploy Marketplace
         const Marketplace = await ethers.getContractFactory("Marketplace");
         marketplace = await Marketplace.deploy(
-            await loyaltyToken.getAddress(),
-            await reviewSystem.getAddress()
-        );
-
+          await loyaltyToken.getAddress(),
+          await reviewSystem.getAddress()
+        )
         // Grant minter role to marketplace
         await loyaltyToken.transferOwnership(await marketplace.getAddress());
     });
@@ -38,23 +36,23 @@ describe("Marketplace System", function() {
     describe("Listing Operations", function() {
         it("Should create a listing", async function() {
             const tx = await marketplace.connect(seller).createListing(
-                price,
-                "ipfs://test"
+              price,
+              "ipfs://test"
             );
-            
-            await expect(tx)
+            console.log("1")
+            expect(tx)
 
             const listing = await marketplace.listings(0);
             expect(listing.seller).to.equal(seller.address);
             expect(listing.price).to.equal(price);
-            expect(listing.active).to.be.true;
+            expect(listing.isActive).to.be.true;
         });
 
         it("Should buy a listing", async function() {
             await marketplace.connect(seller).createListing(price, "ipfs://test");
             
             const tx = await marketplace.connect(buyer).buyListing(0, {
-                value: price
+              value: price
             });
 
             await expect(tx)
@@ -62,7 +60,7 @@ describe("Marketplace System", function() {
                 .withArgs(0, buyer.address, price);
 
             const listing = await marketplace.listings(0);
-            expect(listing.active).to.be.false;
+            expect(listing.isActive).to.be.false;
         });
 
         it("Should cancel a listing", async function() {
@@ -75,7 +73,7 @@ describe("Marketplace System", function() {
                 .withArgs(0);
 
             const listing = await marketplace.listings(0);
-            expect(listing.active).to.be.false;
+            expect(listing.isActive).to.be.false;
         });
     });
 

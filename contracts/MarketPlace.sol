@@ -18,8 +18,8 @@ contract Marketplace is IMarketPlace, Ownable, ReentrancyGuard {
     uint256 public constant LOYALTY_REWARD_RATE = 100; // 1%
     
     constructor(address _loyaltyToken, address _reviewSystem) Ownable(msg.sender) {
-        loyaltyToken = LoyaltyToken(_loyaltyToken);
-        reviewSystem = ReviewSystem(_reviewSystem);
+      loyaltyToken = LoyaltyToken(_loyaltyToken);
+      reviewSystem = ReviewSystem(_reviewSystem);
     }
 
     function createListing(uint256 price, string memory ipfsHash) 
