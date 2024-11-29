@@ -3,7 +3,6 @@ import { expect } from "chai";
 import "@nomicfoundation/hardhat-ethers";
 import "@nomicfoundation/hardhat-chai-matchers";
 import { ethers }  from "hardhat";
-import { Marketplace, LoyaltyToken, ReviewSystem } from "../typechain-types";
 
 describe("Marketplace System", function() {
     let marketplace: any;
