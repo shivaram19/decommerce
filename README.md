@@ -2,6 +2,39 @@
 
 A Web3 marketplace enabling secure P2P buying and selling with cryptocurrency.
 
+
+## Installation
+
+### Prerequisites
+- Node.js (v16+)
+- npm/yarn
+- MetaMask wallet
+
+### Setup Steps
+```bash
+# Clone repository
+git clone [repo-url]
+cd [repo-name]
+
+# Install dependencies
+npm install
+
+# Create environment file
+cp .env.example .env
+# Add keys to .env:
+# INFURA_KEY=
+# PRIVATE_KEY=
+# ETHERSCAN_API_KEY=
+
+# Compile contracts
+npx hardhat compile
+
+# Run tests
+npx hardhat test
+
+# Deploy locally
+npx hardhat node
+npx hardhat run scripts/deploy.ts --network localhost
 ## Features
 
 ### ✅ Completed
