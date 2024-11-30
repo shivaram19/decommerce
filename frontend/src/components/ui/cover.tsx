@@ -211,11 +211,9 @@ export const Beam = ({
 };
 
 export const CircleIcon = ({
-  className,
-  delay,
+  className
 }: {
   className?: string;
-  delay?: number;
 }) => {
   return (
     <div
