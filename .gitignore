@@ -6,7 +6,6 @@ logs/
 *.log
 
 # Build artifacts
-dist/
 build/
 
 # Ignore all CSS files
